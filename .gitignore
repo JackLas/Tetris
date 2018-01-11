@@ -1,0 +1,5 @@
+bin/*.o
+*.exe
+*.sublime*
+*.png
+header/log.hpp
