@@ -4,3 +4,4 @@ bin/*.o
 *.png
 header/log.hpp
 example.cpp
+coordinates.txt
