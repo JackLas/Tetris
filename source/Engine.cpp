@@ -5,7 +5,7 @@
 Engine::Engine():
 window(sf::VideoMode(523, 644), "Tetris", sf::Style::Close)
 {
-	window.setVerticalSyncEnabled(true);
+	window.setFramerateLimit(60);
 	srand(time(NULL));
 }
 
