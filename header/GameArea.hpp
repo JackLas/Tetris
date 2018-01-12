@@ -8,8 +8,8 @@ class GameArea: public sf::Drawable
 private:
 	sf::Sprite frame;
 public:
-	GameArea(const GameArea& area) = delete;
-	void operator=(const GameArea& area) = delete;
+	GameArea(const GameArea &area) = delete;
+	void operator=(const GameArea &area) = delete;
 
 	GameArea(const sf::Texture &txFrame);
 	GameArea();

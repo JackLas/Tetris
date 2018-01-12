@@ -8,8 +8,8 @@ class ResourceLoader
 {
 private:
 public:
-	ResourceLoader(const ResourceLoader& loader) = delete;
-	void operator=(const ResourceLoader& loader) = delete;
+	ResourceLoader(const ResourceLoader &loader) = delete;
+	void operator=(const ResourceLoader &loader) = delete;
 
 	ResourceLoader();
 	~ResourceLoader();

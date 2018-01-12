@@ -14,8 +14,8 @@ private:
 
 	GameArea gameArea;
 public:
-	Game(const Game& game) = delete;
-	const Game operator=(const Game& game) = delete;
+	Game(const Game &game) = delete;
+	const Game operator=(const Game &game) = delete;
 
 	Game();
 	virtual ~Game();

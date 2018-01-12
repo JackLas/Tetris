@@ -10,8 +10,8 @@ protected:
 private:
 	sf::Clock clock;
 public:
-	Engine(const Engine& engine) = delete;
-	void operator=(const Engine& engine) = delete;
+	Engine(const Engine &engine) = delete;
+	void operator=(const Engine &engine) = delete;
 
 	Engine();
 	virtual ~Engine();
