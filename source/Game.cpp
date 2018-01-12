@@ -8,6 +8,8 @@ Game::Game()
 	txGameAreaFrame = loader.loadTexture("res/gameAreaFrame.png");
 	txScoreFrame = loader.loadTexture("res/scoreFrame.png");
 	txNextFrame = loader.loadTexture("res/nextFrame.png");
+
+	gameArea.setFrame(txGameAreaFrame);
 }
 
 Game::~Game()
@@ -31,6 +33,6 @@ void Game::update(const float deltaTime)
 void Game::render()
 {
 	window.clear();
-		//draw
+		window.draw(gameArea);
 	window.display();
 }

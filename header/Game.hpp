@@ -2,6 +2,7 @@
 #define GAME_HPP
 
 #include "Engine.hpp"
+#include "GameArea.hpp"
 
 class Game: public Engine
 {
@@ -10,6 +11,8 @@ private:
 	sf::Texture txGameAreaFrame;
 	sf::Texture txScoreFrame;
 	sf::Texture txNextFrame;
+
+	GameArea gameArea;
 public:
 	Game(const Game& game) = delete;
 	const Game operator=(const Game& game) = delete;
