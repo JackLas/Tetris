@@ -19,6 +19,8 @@ public:
 
 	void update();
 	void draw(sf::RenderTarget &target, sf::RenderStates states = sf::RenderStates::Default) const;
+private:
+	void init();
 };
 
 #endif //GAMEAREA_HPP

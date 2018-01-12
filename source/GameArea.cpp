@@ -3,12 +3,18 @@
 GameArea::GameArea(const sf::Texture &txFrame)
 {
 	frame.setTexture(txFrame);
-	frame.setPosition(sf::Vector2f(15, 15));
+	init();
 }
 
 GameArea::GameArea()
 {
-	frame.setPosition(sf::Vector2f(15, 15));
+	init();
+}
+
+void GameArea::init()
+{
+	frame.setPosition(sf::Vector2f(15, 15));	
+	frame.setColor(sf::Color(0, 0, 255, 255));
 }
 
 GameArea::~GameArea()
