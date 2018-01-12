@@ -3,3 +3,4 @@ bin/*.o
 *.sublime*
 *.png
 header/log.hpp
+example.cpp

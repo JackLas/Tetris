@@ -20,18 +20,22 @@ FLAGS = $(COMP_FLAGS) $(DLL_LINK)
 #object files
 OBJ = 	$(BIN)/main.o \
 		$(BIN)/Engine.o \
-		$(BIN)/Game.o 
+		$(BIN)/Game.o \
+		$(BIN)/ResourceLoader.o
 
 #final linking
 main.exe: $(OBJ)
 	g++ $^ $(FLAGS) -o $@
 
 #object compilation
-$(BIN)/main.o: $(SRC)/main.cpp $(HDR)/Game.hpp
+$(BIN)/main.o: $(SRC)/main.cpp $(HDR)/Game.hpp $(HDR)/ResourceLoader.hpp
 	g++ $< $(FLAGS) $(OBJ_OUT_FLAGS)
 
 $(BIN)/Engine.o: $(SRC)/Engine.cpp $(HDR)/Engine.hpp
 	g++ $< $(FLAGS) $(OBJ_OUT_FLAGS)
 
 $(BIN)/Game.o: $(SRC)/Game.cpp $(HDR)/Game.hpp $(HDR)/Engine.hpp
+	g++ $< $(FLAGS) $(OBJ_OUT_FLAGS)
+
+$(BIN)/ResourceLoader.o: $(SRC)/ResourceLoader.cpp $(HDR)/ResourceLoader.hpp
 	g++ $< $(FLAGS) $(OBJ_OUT_FLAGS)

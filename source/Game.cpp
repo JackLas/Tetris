@@ -1,7 +1,13 @@
 #include "Game.hpp"
+#include "ResourceLoader.hpp"
 
 Game::Game()
 {
+	ResourceLoader loader;
+	txBlock = loader.loadTexture("res/block.png");
+	txGameAreaFrame = loader.loadTexture("res/gameAreaFrame.png");
+	txScoreFrame = loader.loadTexture("res/scoreFrame.png");
+	txNextFrame = loader.loadTexture("res/nextFrame.png");
 }
 
 Game::~Game()

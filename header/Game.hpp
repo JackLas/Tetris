@@ -6,6 +6,10 @@
 class Game: public Engine
 {
 private:
+	sf::Texture txBlock;
+	sf::Texture txGameAreaFrame;
+	sf::Texture txScoreFrame;
+	sf::Texture txNextFrame;
 public:
 	Game(const Game& game) = delete;
 	const Game operator=(const Game& game) = delete;
