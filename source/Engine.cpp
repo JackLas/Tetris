@@ -21,7 +21,7 @@ void Engine::run()
 		float deltaTime = clock.restart().asSeconds()
 		handleInput();
 		if(!isPause)
-			update();
+			update(deltaTime);
 		render();
 	}
 }
