@@ -8,6 +8,7 @@ class Engine
 protected:
 	sf::RenderWindow window;
 private:
+	bool isPause;
 	sf::Clock clock;
 public:
 	Engine(const Engine &engine) = delete;
