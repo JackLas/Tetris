@@ -17,7 +17,7 @@ public:
 	Engine();
 	virtual ~Engine();
 
-	virtual void handleInput() = 0;
+	virtual void handleInput(const sf::Event event) = 0;
 	virtual void update(const float deltaTime) = 0;
 	virtual void render() = 0;
 

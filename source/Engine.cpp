@@ -18,10 +18,21 @@ void Engine::run()
 {
 	while(window.isOpen())
 	{
-		float deltaTime = clock.restart().asSeconds()
-		handleInput();
+		float deltaTime = clock.restart().asSeconds();
+		
+		sf::Event event;
+		while(window.pollEvent(event))
+		{
+			if(event.type == sf::Event::Closed)
+				window.close();
+			handleInput(event);
+		}
+
 		if(!isPause)
 			update(deltaTime);
+
+		window.clear();
 		render();
+		window.display();
 	}
 }

@@ -16,14 +16,8 @@ Game::~Game()
 {
 }
 
-void Game::handleInput()
+void Game::handleInput(const sf::Event event)
 {
-	sf::Event event;
-	while(window.pollEvent(event))
-	{
-		if(event.type == sf::Event::Closed)
-			window.close();
-	}
 }
 
 void Game::update(const float deltaTime)
@@ -32,7 +26,5 @@ void Game::update(const float deltaTime)
 
 void Game::render()
 {
-	window.clear();
-		window.draw(gameArea);
-	window.display();
+	window.draw(gameArea);
 }
