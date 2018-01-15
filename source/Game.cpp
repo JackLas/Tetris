@@ -10,10 +10,14 @@ Game::Game()
 	txNextFrame = loader.loadTexture("res/nextFrame.png");
 
 	gameArea.setFrame(txGameAreaFrame);
+	tetramino = new Tetramino(txBlock);
+	tetramino->setPositionOffset(sf::Vector2f(15+7, 15+7));
+	tetramino->setBuildingPosition(sf::Vector2f(0,0));
 }
 
 Game::~Game()
 {
+	delete tetramino;
 }
 
 void Game::handleInput(const sf::Event event)
@@ -22,9 +26,11 @@ void Game::handleInput(const sf::Event event)
 
 void Game::update(const float deltaTime)
 {
+	tetramino->update();
 }
 
 void Game::render()
 {
+	window.draw(*tetramino);
 	window.draw(gameArea);
 }

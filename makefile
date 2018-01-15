@@ -19,7 +19,9 @@ OBJ = 	$(BIN)/main.o \
 		$(BIN)/Engine.o \
 		$(BIN)/Game.o \
 		$(BIN)/ResourceLoader.o \
-		$(BIN)/GameArea.o 
+		$(BIN)/GameArea.o \
+		$(BIN)/Tetramino.o \
+		$(BIN)/Block.o
 
 #final linking
 main.exe: $(OBJ)
@@ -39,4 +41,10 @@ $(BIN)/ResourceLoader.o: $(SRC)/ResourceLoader.cpp $(HDR)/ResourceLoader.hpp
 	$(COMPILATION_COMMAND)
 
 $(BIN)/GameArea.o: $(SRC)/GameArea.cpp $(HDR)/GameArea.hpp
+	$(COMPILATION_COMMAND)
+
+$(BIN)/Tetramino.o: $(SRC)/Tetramino.cpp $(HDR)/Tetramino.hpp
+	$(COMPILATION_COMMAND)
+
+$(BIN)/Block.o: $(SRC)/Block.cpp $(HDR)/Block.hpp
 	$(COMPILATION_COMMAND)

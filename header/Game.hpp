@@ -3,6 +3,7 @@
 
 #include "Engine.hpp"
 #include "GameArea.hpp"
+#include "Tetramino.hpp"
 
 class Game: public Engine
 {
@@ -13,6 +14,7 @@ private:
 	sf::Texture txNextFrame;
 
 	GameArea gameArea;
+	Tetramino *tetramino;
 public:
 	Game(const Game &game) = delete;
 	const Game operator=(const Game &game) = delete;
