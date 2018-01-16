@@ -2,17 +2,19 @@
 #define TETRAMINO_HPP
 
 #include <SFML\Graphics.hpp>
+#include <array>
+
 #include "Block.hpp"
 
 class Tetramino: public sf::Drawable
 {
-private:
+public:
 	static const unsigned int numOfBlocks = 4;
+private:
 	Block blocks[numOfBlocks];
 	sf::Vector2f offset;
 	sf::Vector2f buildingPosition;
-private:
-	void setPixelPosition();
+
 public:
 	Tetramino(const sf::Texture &texture);
 	Tetramino(const Tetramino &tetramino);
@@ -20,9 +22,12 @@ public:
 	~Tetramino();
 
 	void update();
+	void adaptPixelPosition(); 
 	void setPositionOffset(const sf::Vector2f position);
 	void setBuildingPosition(const sf::Vector2f position);
-	void draw(sf::RenderTarget &target, sf::RenderStates states = sf::RenderStates::Default) const; 
+	void setColor(const sf::Color color);
+	void setModel(sf::Vector2f pos0, sf::Vector2f pos1, sf::Vector2f pos2, sf::Vector2f pos3);
+	void draw(sf::RenderTarget &target, sf::RenderStates states = sf::RenderStates::Default) const;
 };
 
 #endif //TETRAMINO_HPP

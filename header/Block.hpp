@@ -20,6 +20,7 @@ public:
 	sf::Vector2f getBuildingPosition();
 	void setPixelPosition(const sf::Vector2f position);
 	void setTexture(const sf::Texture &texture);
+	void setColor(const sf::Color color);
 	void draw(sf::RenderTarget &target, sf::RenderStates states = sf::RenderStates::Default) const;
 };
 

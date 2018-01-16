@@ -21,7 +21,8 @@ OBJ = 	$(BIN)/main.o \
 		$(BIN)/ResourceLoader.o \
 		$(BIN)/GameArea.o \
 		$(BIN)/Tetramino.o \
-		$(BIN)/Block.o
+		$(BIN)/Block.o \
+		$(BIN)/TetraminoFactory.o
 
 #final linking
 main.exe: $(OBJ)
@@ -34,7 +35,7 @@ $(BIN)/main.o: $(SRC)/main.cpp $(HDR)/Game.hpp
 $(BIN)/Engine.o: $(SRC)/Engine.cpp $(HDR)/Engine.hpp
 	$(COMPILATION_COMMAND)
 
-$(BIN)/Game.o: $(SRC)/Game.cpp $(HDR)/Game.hpp $(HDR)/Engine.hpp $(HDR)/GameArea.hpp $(HDR)/ResourceLoader.hpp
+$(BIN)/Game.o: $(SRC)/Game.cpp $(HDR)/Game.hpp $(HDR)/Engine.hpp $(HDR)/GameArea.hpp $(HDR)/ResourceLoader.hpp $(HDR)/Tetramino.hpp
 	$(COMPILATION_COMMAND)
 
 $(BIN)/ResourceLoader.o: $(SRC)/ResourceLoader.cpp $(HDR)/ResourceLoader.hpp
@@ -43,8 +44,11 @@ $(BIN)/ResourceLoader.o: $(SRC)/ResourceLoader.cpp $(HDR)/ResourceLoader.hpp
 $(BIN)/GameArea.o: $(SRC)/GameArea.cpp $(HDR)/GameArea.hpp
 	$(COMPILATION_COMMAND)
 
-$(BIN)/Tetramino.o: $(SRC)/Tetramino.cpp $(HDR)/Tetramino.hpp
+$(BIN)/Tetramino.o: $(SRC)/Tetramino.cpp $(HDR)/Tetramino.hpp $(HDR)/Block.hpp
 	$(COMPILATION_COMMAND)
 
 $(BIN)/Block.o: $(SRC)/Block.cpp $(HDR)/Block.hpp
+	$(COMPILATION_COMMAND)
+
+$(BIN)/TetraminoFactory.o: $(SRC)/TetraminoFactory.cpp $(HDR)/TetraminoFactory.hpp $(HDR)/Tetramino.hpp
 	$(COMPILATION_COMMAND)

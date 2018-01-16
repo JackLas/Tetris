@@ -4,6 +4,7 @@
 #include "Engine.hpp"
 #include "GameArea.hpp"
 #include "Tetramino.hpp"
+#include "TetraminoFactory.hpp"
 
 class Game: public Engine
 {
@@ -14,6 +15,7 @@ private:
 	sf::Texture txNextFrame;
 
 	GameArea gameArea;
+	TetraminoFactory factory;
 	Tetramino *tetramino;
 public:
 	Game(const Game &game) = delete;

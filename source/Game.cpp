@@ -9,10 +9,13 @@ Game::Game()
 	txScoreFrame = loader.loadTexture("res/scoreFrame.png");
 	txNextFrame = loader.loadTexture("res/nextFrame.png");
 
+	factory.setBlockTexture(txBlock);
+
 	gameArea.setFrame(txGameAreaFrame);
-	tetramino = new Tetramino(txBlock);
-	tetramino->setPositionOffset(sf::Vector2f(15+7, 15+7));
-	tetramino->setBuildingPosition(sf::Vector2f(0,0));
+
+	tetramino = factory.nextTetramino();
+	tetramino->setBuildingPosition(sf::Vector2f(4, 0));
+	tetramino->adaptPixelPosition();
 }
 
 Game::~Game()
@@ -22,11 +25,21 @@ Game::~Game()
 
 void Game::handleInput(const sf::Event event)
 {
+	if(event.type == sf::Event::KeyPressed)
+	{
+		//test, delete in future
+		if(event.key.code == sf::Keyboard::Space)
+		{
+			delete tetramino;
+			tetramino = factory.nextTetramino();
+			tetramino->setBuildingPosition(sf::Vector2f(4, 0));
+			tetramino->adaptPixelPosition();
+		}
+	}
 }
 
 void Game::update(const float deltaTime)
 {
-	tetramino->update();
 }
 
 void Game::render()
