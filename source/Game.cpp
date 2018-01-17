@@ -14,7 +14,7 @@ Game::Game()
 	gameArea.setFrame(txGameAreaFrame);
 
 	tetramino = factory.nextTetramino();
-	tetramino->setBuildingPosition(sf::Vector2f(4, 0));
+	tetramino->setBuildingPosition(sf::Vector2f(4, 4));
 	tetramino->adaptPixelPosition();
 }
 
@@ -32,9 +32,12 @@ void Game::handleInput(const sf::Event event)
 		{
 			delete tetramino;
 			tetramino = factory.nextTetramino();
-			tetramino->setBuildingPosition(sf::Vector2f(4, 0));
+			tetramino->setBuildingPosition(sf::Vector2f(4, 4));
 			tetramino->adaptPixelPosition();
 		}
+
+		if(event.key.code == sf::Keyboard::Up)
+			tetramino->rotate();
 	}
 }
 

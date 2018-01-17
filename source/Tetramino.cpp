@@ -24,10 +24,28 @@ void Tetramino::update()
 {
 }
 
+
+
+void Tetramino::rotate()
+{
+	sf::Vector2f pivot = blocks[1].getBuildingPosition(); //center of rotation
+	for(unsigned int i = 0; i < numOfBlocks; ++i)
+	{
+		sf::Vector2f tmp;
+		tmp.x = blocks[i].getBuildingPosition().y - pivot.y;
+		tmp.y = blocks[i].getBuildingPosition().x - pivot.x;
+		blocks[i].setBuildingPosition(sf::Vector2f(
+			pivot.x - tmp.x, 
+			pivot.y + tmp.y)); 
+	}
+	adaptPixelPosition();
+}
+
 void Tetramino::adaptPixelPosition()
 {
 	for(unsigned int i = 0; i < numOfBlocks; ++i)
 	{
+		//30 - size of block...bad practice
 		blocks[i].setPixelPosition(sf::Vector2f(
 			offset.x + buildingPosition.x*30 + blocks[i].getBuildingPosition().x*30,
 			offset.y + buildingPosition.y*30 + blocks[i].getBuildingPosition().y*30));

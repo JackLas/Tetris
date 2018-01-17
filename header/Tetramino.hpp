@@ -8,9 +8,8 @@
 
 class Tetramino: public sf::Drawable
 {
-public:
-	static const unsigned int numOfBlocks = 4;
 private:
+	static const unsigned int numOfBlocks = 4;
 	Block blocks[numOfBlocks];
 	sf::Vector2f offset;
 	sf::Vector2f buildingPosition;
@@ -22,11 +21,15 @@ public:
 	~Tetramino();
 
 	void update();
+
+	void rotate();
+
 	void adaptPixelPosition(); 
 	void setPositionOffset(const sf::Vector2f position);
 	void setBuildingPosition(const sf::Vector2f position);
 	void setColor(const sf::Color color);
 	void setModel(sf::Vector2f pos0, sf::Vector2f pos1, sf::Vector2f pos2, sf::Vector2f pos3);
+
 	void draw(sf::RenderTarget &target, sf::RenderStates states = sf::RenderStates::Default) const;
 };
 
