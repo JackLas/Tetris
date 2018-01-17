@@ -21,9 +21,9 @@ public:
 	~Tetramino();
 
 	void update();
-
+	void move(const sf::Vector2f position);
 	void rotate();
-
+	
 	void adaptPixelPosition(); 
 	void setPositionOffset(const sf::Vector2f position);
 	void setBuildingPosition(const sf::Vector2f position);

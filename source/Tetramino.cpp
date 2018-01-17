@@ -24,7 +24,12 @@ void Tetramino::update()
 {
 }
 
-
+void Tetramino::move(const sf::Vector2f position)
+{
+	for(unsigned int i = 0; i < numOfBlocks; ++i)
+		blocks[i].setBuildingPosition(blocks[i].getBuildingPosition() + position);
+	adaptPixelPosition();
+}
 
 void Tetramino::rotate()
 {

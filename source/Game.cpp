@@ -38,6 +38,12 @@ void Game::handleInput(const sf::Event event)
 
 		if(event.key.code == sf::Keyboard::Up)
 			tetramino->rotate();
+
+		if(event.key.code == sf::Keyboard::Left)
+			tetramino->move(sf::Vector2f(-1, 0));
+
+		if(event.key.code == sf::Keyboard::Right)
+			tetramino->move(sf::Vector2f(1, 0));
 	}
 }
 
