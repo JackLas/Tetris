@@ -40,15 +40,16 @@ void Game::handleInput(const sf::Event event)
 			tetramino->rotate();
 
 		if(event.key.code == sf::Keyboard::Left)
-			tetramino->move(sf::Vector2f(-1, 0));
+			tetramino->moveLeft();
 
 		if(event.key.code == sf::Keyboard::Right)
-			tetramino->move(sf::Vector2f(1, 0));
+			tetramino->moveRight();
 	}
 }
 
 void Game::update(const float deltaTime)
 {
+	tetramino->update();
 }
 
 void Game::render()
