@@ -10,12 +10,11 @@ Game::Game()
 	txNextFrame = loader.loadTexture("res/nextFrame.png");
 
 	factory.setBlockTexture(txBlock);
+	factory.setSpawnPoint(sf::Vector2f(4, 4));
 
 	gameArea.setFrame(txGameAreaFrame);
 
 	tetramino = factory.nextTetramino();
-	tetramino->setBuildingPosition(sf::Vector2f(4, 4));
-	tetramino->adaptPixelPosition();
 }
 
 Game::~Game()
@@ -32,8 +31,6 @@ void Game::handleInput(const sf::Event event)
 		{
 			delete tetramino;
 			tetramino = factory.nextTetramino();
-			tetramino->setBuildingPosition(sf::Vector2f(4, 4));
-			tetramino->adaptPixelPosition();
 		}
 
 		if(event.key.code == sf::Keyboard::Up)

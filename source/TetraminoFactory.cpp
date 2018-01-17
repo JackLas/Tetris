@@ -5,12 +5,6 @@ TetraminoFactory::TetraminoFactory()
 	initColors();
 }
 
-TetraminoFactory::TetraminoFactory(sf::Texture &texture):
-txBlock(&texture)
-{
-	initColors();
-}
-
 TetraminoFactory::~TetraminoFactory()
 {
 }
@@ -20,11 +14,17 @@ void TetraminoFactory::setBlockTexture(sf::Texture &texture)
 	txBlock = &texture;
 }
 
+void TetraminoFactory::setSpawnPoint(const sf::Vector2f point)
+{
+	spawnPoint = point;
+}
+
 Tetramino* TetraminoFactory::nextTetramino()
 {
 	Tetramino *tetramino = new Tetramino(*txBlock);
 	tetramino->setColor(colors[rand()%colors.size()]);
 	tetramino->setPositionOffset(sf::Vector2f(15+7, 15+7));
+	tetramino->setBuildingPosition(spawnPoint);
 	switch(rand()%7)
 	{
 		case 0: //O
