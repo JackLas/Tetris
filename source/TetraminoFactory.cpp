@@ -2,6 +2,8 @@
 
 TetraminoFactory::TetraminoFactory()
 {
+	spawnPoint.x = 0;
+	spawnPoint.y = 0;
 	initColors();
 }
 
