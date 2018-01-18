@@ -42,7 +42,7 @@ void Tetramino::setBuildingPosition(const sf::Vector2f position)
 	buildingPosition = position;
 }
 
-sf::Vector2f Tetramino::getBuildingPosition()
+sf::Vector2f Tetramino::getBuildingPosition() const 
 {
 	return buildingPosition;
 }
@@ -80,7 +80,7 @@ void Tetramino::setSpeed(const float value)
 	speed = value;
 }
 
-unsigned int Tetramino::getNumberOfBlocks()
+unsigned int Tetramino::getNumOfBlocks() const
 {
 	return numOfBlocks;
 }

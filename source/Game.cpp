@@ -41,6 +41,13 @@ void Game::handleInput(const sf::Event event)
 
 		if(event.key.code == sf::Keyboard::Down)
 			tetramino->speedUp();
+
+		//test, delete in future
+		if(event.key.code == sf::Keyboard::Return)
+		{
+			gameArea.takeBlocksFromTetramino(*tetramino);
+			resetTetramino();
+		}
 	}
 
 	if(event.type == sf::Event::KeyReleased)
@@ -65,7 +72,7 @@ void Game::checkBorderIntersectionAndPushBack()
 	sf::Vector2f min(tetramino->getBuildingPosition() + (*tetramino)[0].getBuildingPosition());
 	sf::Vector2f max(min);
 
-	for(unsigned int i = 1; i < tetramino->getNumberOfBlocks(); ++i)
+	for(unsigned int i = 1; i < tetramino->getNumOfBlocks(); ++i)
 	{
 		sf::Vector2f cur = tetramino->getBuildingPosition() + (*tetramino)[i].getBuildingPosition();
 		if(cur.x > max.x) max.x = cur.x;

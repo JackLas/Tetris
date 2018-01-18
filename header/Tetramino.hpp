@@ -29,7 +29,7 @@ public:
 
 	void setPositionOffset(const sf::Vector2f position);
 	void setBuildingPosition(const sf::Vector2f position);
-	sf::Vector2f getBuildingPosition();
+	sf::Vector2f getBuildingPosition() const;
 	void setModel(	const sf::Vector2f pos0, 
 					const sf::Vector2f pos1, 
 					const sf::Vector2f pos2, 
@@ -37,7 +37,7 @@ public:
 	void adaptPixelPosition();
 	void setColor(const sf::Color color);
 	void setSpeed(const float value);
-	unsigned int getNumberOfBlocks(); 
+	unsigned int getNumOfBlocks() const; 
 
 	void moveLeft();
 	void moveRight();

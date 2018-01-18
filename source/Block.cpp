@@ -38,6 +38,11 @@ void Block::setColor(const sf::Color color)
 	sprite.setColor(color);
 }
 
+const sf::Sprite& Block::getSprite()
+{
+	return sprite;
+}
+
 void Block::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
 	target.draw(sprite);
