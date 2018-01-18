@@ -18,6 +18,12 @@ Tetramino::Tetramino(const Tetramino &tetramino)
 void Tetramino::operator=(const Tetramino &tetramino)
 {
 }
+
+Block& Tetramino::operator[](const unsigned int index)
+{
+	return blocks[index];
+}
+
 Tetramino::~Tetramino()
 {
 }
@@ -33,7 +39,15 @@ void Tetramino::setBuildingPosition(const sf::Vector2f position)
 	buildingPosition = position;
 }
 
-void Tetramino::setModel(sf::Vector2f pos0, sf::Vector2f pos1, sf::Vector2f pos2, sf::Vector2f pos3)
+sf::Vector2f Tetramino::getBuildingPosition()
+{
+	return buildingPosition;
+}
+
+void Tetramino::setModel(	const sf::Vector2f pos0, 
+							const sf::Vector2f pos1, 
+							const sf::Vector2f pos2, 
+							const sf::Vector2f pos3)
 {
 	blocks[0].setBuildingPosition(pos0);
 	blocks[1].setBuildingPosition(pos1);
@@ -56,6 +70,11 @@ void Tetramino::setColor(const sf::Color color)
 {
 	for(unsigned int i = 0; i < numOfBlocks; ++i)
 		blocks[i].setColor(color);
+}
+
+unsigned int Tetramino::getNumberOfBlocks()
+{
+	return numOfBlocks;
 }
 
 void Tetramino::moveLeft()
@@ -93,7 +112,12 @@ void Tetramino::update()
 
 	if(isChanged)
 		adaptPixelPosition();
+}
 
+void Tetramino::hardMove(const sf::Vector2f step)
+{
+	buildingPosition += step;
+	adaptPixelPosition();
 }
 
 void Tetramino::draw(sf::RenderTarget &target, sf::RenderStates states) const

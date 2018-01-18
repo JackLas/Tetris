@@ -27,6 +27,8 @@ public:
 	void handleInput(const sf::Event event);
 	void update(const float deltaTime);
 	void render();
+
+	void checkBorderIntersectionAndPushBack();
 };
 
 #endif //GAME_HPP

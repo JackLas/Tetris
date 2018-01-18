@@ -21,18 +21,26 @@ public:
 	Tetramino(const sf::Texture &texture);
 	Tetramino(const Tetramino &tetramino);
 	void operator=(const Tetramino &tetramino);
+	Block& operator[](const unsigned int index);
 	~Tetramino();
 
 	void setPositionOffset(const sf::Vector2f position);
 	void setBuildingPosition(const sf::Vector2f position);
-	void setModel(sf::Vector2f pos0, sf::Vector2f pos1, sf::Vector2f pos2, sf::Vector2f pos3);
+	sf::Vector2f getBuildingPosition();
+	void setModel(	const sf::Vector2f pos0, 
+					const sf::Vector2f pos1, 
+					const sf::Vector2f pos2, 
+					const sf::Vector2f pos3);
 	void adaptPixelPosition();
-	void setColor(const sf::Color color); 
+	void setColor(const sf::Color color);
+	unsigned int getNumberOfBlocks(); 
 
 	void moveLeft();
 	void moveRight();
 	void rotate();
 	void update();
+
+	void hardMove(const sf::Vector2f step);
 
 	void draw(sf::RenderTarget &target, sf::RenderStates states = sf::RenderStates::Default) const;
 private:

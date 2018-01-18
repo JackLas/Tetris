@@ -2,10 +2,13 @@
 #define GAMEAREA_HPP
 
 #include <SFML/Graphics.hpp>
+#include "Tetramino.hpp"
 
 class GameArea: public sf::Drawable
 {
 private:
+	static const unsigned int numOfColumns = 10;
+	static const unsigned int numOfRows = 20;
 	sf::Sprite frame;
 public:
 	GameArea(const GameArea &area) = delete;
@@ -16,6 +19,9 @@ public:
 	~GameArea();
 
 	void setFrame(const sf::Texture &txFrame);
+	
+	unsigned int getNumOfColumns();
+	unsigned int getNumOfRows();
 
 	void update();
 	void draw(sf::RenderTarget &target, sf::RenderStates states = sf::RenderStates::Default) const;

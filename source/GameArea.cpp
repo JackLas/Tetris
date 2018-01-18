@@ -26,6 +26,16 @@ void GameArea::setFrame(const sf::Texture &txFrame)
 	frame.setTexture(txFrame);
 }
 
+unsigned int GameArea::getNumOfColumns()
+{
+	return numOfColumns;
+}
+
+unsigned int GameArea::getNumOfRows()
+{
+	return numOfRows;
+}
+
 void GameArea::update()
 {
 }
