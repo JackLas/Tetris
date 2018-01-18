@@ -16,12 +16,12 @@ public:
 
 	Engine();
 	virtual ~Engine();
-
+	
+	void run();
+protected:
 	virtual void handleInput(const sf::Event event) = 0;
 	virtual void update(const float deltaTime) = 0;
 	virtual void render() = 0;
-
-	void run();
 };
 
 #endif //ENGINE_HPP

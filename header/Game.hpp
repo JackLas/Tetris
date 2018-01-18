@@ -23,7 +23,7 @@ public:
 
 	Game();
 	virtual ~Game();
-
+private:
 	void handleInput(const sf::Event event);
 	void update(const float deltaTime);
 	void render();
