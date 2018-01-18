@@ -25,6 +25,14 @@ public:
 	Tetramino* nextTetramino();
 private:
 	void initColors();
+
+	void setModel_O(Tetramino *tetramino);
+	void setModel_I(Tetramino *tetramino);
+	void setModel_T(Tetramino *tetramino);
+	void setModel_S(Tetramino *tetramino);
+	void setModel_Z(Tetramino *tetramino);
+	void setModel_J(Tetramino *tetramino);
+	void setModel_L(Tetramino *tetramino);
 };
 
 #endif //TETRAMINOFACTORY_HPP

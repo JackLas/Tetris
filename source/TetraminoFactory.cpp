@@ -29,47 +29,26 @@ Tetramino* TetraminoFactory::nextTetramino()
 	tetramino->setBuildingPosition(spawnPoint);
 	switch(rand()%7)
 	{
-		case 0: //O
-			tetramino->setModel(sf::Vector2f(0, 0), 
-								sf::Vector2f(0, 1), 
-								sf::Vector2f(1, 0), 
-								sf::Vector2f(1, 1));
+		case 0:
+			setModel_O(tetramino);
 			break;
-		case 1: //I
-			tetramino->setModel(sf::Vector2f(0, 0), 
-								sf::Vector2f(1, 0), 
-								sf::Vector2f(2, 0), 
-								sf::Vector2f(3, 0));
+		case 1:
+			setModel_I(tetramino);
 			break;
-		case 2: //S
-			tetramino->setModel(sf::Vector2f(0, 0), 
-								sf::Vector2f(-1, 0), 
-								sf::Vector2f(-1, 1), 
-								sf::Vector2f(-2, 1));
+		case 2:
+			setModel_T(tetramino);
 			break;
-		case 3: //Z
-			tetramino->setModel(sf::Vector2f(0, 0), 
-								sf::Vector2f(1, 0), 
-								sf::Vector2f(1, 1), 
-								sf::Vector2f(2, 1));
+		case 3: 
+			setModel_S(tetramino);
 			break;
-		case 4: //T
-			tetramino->setModel(sf::Vector2f(0, 0), 
-								sf::Vector2f(1, 0), 
-								sf::Vector2f(2, 0), 
-								sf::Vector2f(1, 1));
+		case 4:
+			setModel_Z(tetramino);
 			break;
-		case 5: //J
-			tetramino->setModel(sf::Vector2f(0, 0), 
-								sf::Vector2f(1, 0), 
-								sf::Vector2f(2, 0), 
-								sf::Vector2f(2, 1));
+		case 5:
+			setModel_J(tetramino);
 			break;
-		case 6: //L
-			tetramino->setModel(sf::Vector2f(0, 0), 
-								sf::Vector2f(1, 0), 
-								sf::Vector2f(2, 0), 
-								sf::Vector2f(0, 1));
+		case 6: 
+			setModel_L(tetramino);
 			break;
 	}
 	tetramino->adaptPixelPosition();
@@ -84,4 +63,39 @@ void TetraminoFactory::initColors()
 	colors.push_back(sf::Color::Yellow);
 	colors.push_back(sf::Color::Magenta);
 	colors.push_back(sf::Color::Cyan);
+}
+
+void TetraminoFactory::setModel_O(Tetramino *tetramino)
+{
+	tetramino->setModel(sf::Vector2f(0, 0), sf::Vector2f(0, 1), sf::Vector2f(1, 0), sf::Vector2f(1, 1));
+}
+
+void TetraminoFactory::setModel_I(Tetramino *tetramino)
+{
+	tetramino->setModel(sf::Vector2f(0, 0), sf::Vector2f(1, 0), sf::Vector2f(2, 0), sf::Vector2f(3, 0));
+}
+
+void TetraminoFactory::setModel_T(Tetramino *tetramino)
+{
+	tetramino->setModel(sf::Vector2f(0, 0), sf::Vector2f(1, 0), sf::Vector2f(2, 0), sf::Vector2f(1, 1));
+}
+
+void TetraminoFactory::setModel_S(Tetramino *tetramino)
+{
+	tetramino->setModel(sf::Vector2f(0, 0), sf::Vector2f(-1, 0), sf::Vector2f(-1, 1), sf::Vector2f(-2, 1));
+}
+
+void TetraminoFactory::setModel_Z(Tetramino *tetramino)
+{
+	tetramino->setModel(sf::Vector2f(0, 0), sf::Vector2f(1, 0), sf::Vector2f(1, 1), sf::Vector2f(2, 1));
+}
+
+void TetraminoFactory::setModel_J(Tetramino *tetramino)
+{
+	tetramino->setModel(sf::Vector2f(0, 0), sf::Vector2f(1, 0), sf::Vector2f(2, 0), sf::Vector2f(2, 1));
+}
+
+void TetraminoFactory::setModel_L(Tetramino *tetramino)
+{
+	tetramino->setModel(sf::Vector2f(0, 0), sf::Vector2f(1, 0), sf::Vector2f(2, 0), sf::Vector2f(0, 1));
 }
