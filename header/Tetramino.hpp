@@ -13,9 +13,12 @@ private:
 	Block blocks[numOfBlocks];
 	sf::Vector2f offset;
 	sf::Vector2f buildingPosition;
+	float speed; //number of steps down per second
+	float elapsedTime;
 
 	float moveValueX;
 	bool isRotate;
+	bool isAccelerate;
 
 public:
 	Tetramino(const sf::Texture &texture);
@@ -33,12 +36,15 @@ public:
 					const sf::Vector2f pos3);
 	void adaptPixelPosition();
 	void setColor(const sf::Color color);
+	void setSpeed(const float value);
 	unsigned int getNumberOfBlocks(); 
 
 	void moveLeft();
 	void moveRight();
 	void rotate();
-	void update();
+	void speedUp();
+	void speedDown();
+	void update(const float deltaTime);
 
 	void hardMove(const sf::Vector2f step);
 

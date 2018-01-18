@@ -41,12 +41,19 @@ void Game::handleInput(const sf::Event event)
 
 		if(event.key.code == sf::Keyboard::Right)
 			tetramino->moveRight();
+
+		if(event.key.code == sf::Keyboard::Down)
+			tetramino->speedUp();
 	}
+
+	if(event.type == sf::Event::KeyReleased)
+		if(event.key.code == sf::Keyboard::Down)
+			tetramino->speedDown();
 }
 
 void Game::update(const float deltaTime)
 {
-	tetramino->update();
+	tetramino->update(deltaTime);
 	checkBorderIntersectionAndPushBack();
 }
 
