@@ -29,6 +29,7 @@ private:
 	void render();
 
 	void checkBorderIntersectionAndPushBack();
+	void resetTetramino();
 };
 
 #endif //GAME_HPP

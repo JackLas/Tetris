@@ -28,10 +28,7 @@ void Game::handleInput(const sf::Event event)
 	{
 		//test, delete in future
 		if(event.key.code == sf::Keyboard::Space)
-		{
-			delete tetramino;
-			tetramino = factory.nextTetramino();
-		}
+			resetTetramino();
 
 		if(event.key.code == sf::Keyboard::Up)
 			tetramino->rotate();
@@ -85,4 +82,10 @@ void Game::checkBorderIntersectionAndPushBack()
 		tetramino->hardMove(sf::Vector2f(-((int)max.x % ((int)gameArea.getNumOfColumns()-1)), 0));
 	if(max.y > gameArea.getNumOfRows()-1)
 		tetramino->hardMove(sf::Vector2f(0, -((int)max.y % ((int)gameArea.getNumOfRows()-1))));
+}
+
+void Game::resetTetramino()
+{
+	delete tetramino;
+	tetramino = factory.nextTetramino();
 }
