@@ -31,7 +31,6 @@ Tetramino::~Tetramino()
 {
 }
 
-
 void Tetramino::setPositionOffset(const sf::Vector2i position)
 {
 	offset = position;

@@ -43,6 +43,11 @@ unsigned int GameArea::getNumOfRows()
 	return numOfRows;
 }
 
+bool GameArea::isBlockEmpty(const unsigned int x, const unsigned int y)
+{
+	return blocks[y][x] == nullptr;
+}
+
 void GameArea::takeBlocksFromTetramino(Tetramino &tetramino)
 {
 	for(unsigned int i = 0; i < tetramino.getNumOfBlocks(); ++i)

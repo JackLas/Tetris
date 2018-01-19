@@ -59,6 +59,12 @@ void Game::update(const float deltaTime)
 {
 	tetramino->update(deltaTime);
 	checkBorderIntersectionAndPushBack();
+	if(checkTetraminoMovingEnd())
+	{
+		gameArea.takeBlocksFromTetramino(*tetramino);
+		resetTetramino();
+	}
+	
 }
 
 void Game::render()
@@ -89,6 +95,21 @@ void Game::checkBorderIntersectionAndPushBack()
 		tetramino->hardMove(sf::Vector2i(-((int)max.x % ((int)gameArea.getNumOfColumns()-1)), 0));
 	if(max.y > static_cast<int>(gameArea.getNumOfRows()-1))
 		tetramino->hardMove(sf::Vector2i(0, -((int)max.y % ((int)gameArea.getNumOfRows()-1))));
+}
+
+bool Game::checkTetraminoMovingEnd()
+{
+	for(unsigned int i = 0; i < tetramino->getNumOfBlocks(); ++i)
+	{
+		sf::Vector2i absolutePosition = tetramino->getBuildingPosition() + (*tetramino)[i].getBuildingPosition();
+
+		if(absolutePosition.y == static_cast<int>(gameArea.getNumOfRows()-1))
+			return true;
+
+		if(!gameArea.isBlockEmpty(absolutePosition.x, absolutePosition.y+1))
+			return true;
+	}
+	return false;
 }
 
 void Game::resetTetramino()

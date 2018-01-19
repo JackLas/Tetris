@@ -24,6 +24,8 @@ public:
 	unsigned int getNumOfColumns();
 	unsigned int getNumOfRows();
 
+	bool isBlockEmpty(const unsigned int x, const unsigned int y);
+
 	void takeBlocksFromTetramino(Tetramino &tetramino);
 	void update();
 	void draw(sf::RenderTarget &target, sf::RenderStates states = sf::RenderStates::Default) const;

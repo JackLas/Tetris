@@ -29,6 +29,7 @@ private:
 	void render();
 
 	void checkBorderIntersectionAndPushBack();
+	bool checkTetraminoMovingEnd();
 	void resetTetramino();
 };
 
