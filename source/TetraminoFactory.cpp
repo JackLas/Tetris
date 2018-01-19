@@ -64,6 +64,7 @@ void TetraminoFactory::initColors()
 	colors.push_back(sf::Color::Yellow);
 	colors.push_back(sf::Color::Magenta);
 	colors.push_back(sf::Color::Cyan);
+	colors.push_back(sf::Color(255, 165, 0, 255)); //orange
 }
 
 void TetraminoFactory::setModel_O(Tetramino *tetramino)
