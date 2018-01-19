@@ -10,7 +10,7 @@ Game::Game()
 	txNextFrame = loader.loadTexture("res/nextFrame.png");
 
 	factory.setBlockTexture(txBlock);
-	factory.setSpawnPoint(sf::Vector2f(4, 0));
+	factory.setSpawnPoint(sf::Vector2i(4, 0));
 
 	gameArea.setFrame(txGameAreaFrame);
 
@@ -30,6 +30,13 @@ void Game::handleInput(const sf::Event event)
 		if(event.key.code == sf::Keyboard::Space)
 			resetTetramino();
 
+		//test, delete in future
+		if(event.key.code == sf::Keyboard::Return)
+		{
+			gameArea.takeBlocksFromTetramino(*tetramino);
+			resetTetramino();
+		}
+
 		if(event.key.code == sf::Keyboard::Up)
 			tetramino->rotate();
 
@@ -41,13 +48,6 @@ void Game::handleInput(const sf::Event event)
 
 		if(event.key.code == sf::Keyboard::Down)
 			tetramino->speedUp();
-
-		//test, delete in future
-		if(event.key.code == sf::Keyboard::Return)
-		{
-			gameArea.takeBlocksFromTetramino(*tetramino);
-			resetTetramino();
-		}
 	}
 
 	if(event.type == sf::Event::KeyReleased)
@@ -69,12 +69,12 @@ void Game::render()
 
 void Game::checkBorderIntersectionAndPushBack()
 {
-	sf::Vector2f min(tetramino->getBuildingPosition() + (*tetramino)[0].getBuildingPosition());
-	sf::Vector2f max(min);
+	sf::Vector2i min(tetramino->getBuildingPosition() + (*tetramino)[0].getBuildingPosition());
+	sf::Vector2i max(min);
 
 	for(unsigned int i = 1; i < tetramino->getNumOfBlocks(); ++i)
 	{
-		sf::Vector2f cur = tetramino->getBuildingPosition() + (*tetramino)[i].getBuildingPosition();
+		sf::Vector2i cur = tetramino->getBuildingPosition() + (*tetramino)[i].getBuildingPosition();
 		if(cur.x > max.x) max.x = cur.x;
 		if(cur.x < min.x) min.x = cur.x;
 		if(cur.y > max.y) max.y = cur.y;
@@ -82,13 +82,13 @@ void Game::checkBorderIntersectionAndPushBack()
 	}
 
 	if(min.x < 0) 
-		tetramino->hardMove(sf::Vector2f(-min.x, 0));  
+		tetramino->hardMove(sf::Vector2i(-min.x, 0));  
 	if(min.y < 0) 
-		tetramino->hardMove(sf::Vector2f(0, -min.y));
-	if(max.x > gameArea.getNumOfColumns()-1) 
-		tetramino->hardMove(sf::Vector2f(-((int)max.x % ((int)gameArea.getNumOfColumns()-1)), 0));
-	if(max.y > gameArea.getNumOfRows()-1)
-		tetramino->hardMove(sf::Vector2f(0, -((int)max.y % ((int)gameArea.getNumOfRows()-1))));
+		tetramino->hardMove(sf::Vector2i(0, -min.y));
+	if(max.x > static_cast<int>(gameArea.getNumOfColumns()-1)) 
+		tetramino->hardMove(sf::Vector2i(-((int)max.x % ((int)gameArea.getNumOfColumns()-1)), 0));
+	if(max.y > static_cast<int>(gameArea.getNumOfRows()-1))
+		tetramino->hardMove(sf::Vector2i(0, -((int)max.y % ((int)gameArea.getNumOfRows()-1))));
 }
 
 void Game::resetTetramino()

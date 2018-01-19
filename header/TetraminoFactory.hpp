@@ -11,7 +11,7 @@ class TetraminoFactory
 private:
 	sf::Texture *txBlock;
 	std::vector<sf::Color> colors;
-	sf::Vector2f spawnPoint;
+	sf::Vector2i spawnPoint;
 public:
 	TetraminoFactory(const TetraminoFactory &factory) = delete;
 	void operator=(const TetraminoFactory &factory) = delete;
@@ -20,7 +20,7 @@ public:
 	~TetraminoFactory();
 
 	void setBlockTexture(sf::Texture &texture);
-	void setSpawnPoint(const sf::Vector2f point);
+	void setSpawnPoint(const sf::Vector2i point);
 
 	Tetramino* nextTetramino();
 private:

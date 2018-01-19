@@ -13,19 +13,19 @@ Block::~Block()
 {
 }
 
-void Block::setBuildingPosition(const sf::Vector2f position)
+void Block::setBuildingPosition(const sf::Vector2i position)
 {
 	buildingPosition = position;
 }
 
-sf::Vector2f Block::getBuildingPosition()
+sf::Vector2i Block::getBuildingPosition()
 {
 	return buildingPosition;
 }
 
-void Block::setPixelPosition(const sf::Vector2f position)
+void Block::setPixelPosition(const sf::Vector2i position)
 {
-	sprite.setPosition(position);
+	sprite.setPosition(static_cast<float>(position.x), static_cast<float>(position.y));
 }
 
 void Block::setTexture(const sf::Texture &texture)

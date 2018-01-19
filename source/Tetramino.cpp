@@ -32,25 +32,25 @@ Tetramino::~Tetramino()
 }
 
 
-void Tetramino::setPositionOffset(const sf::Vector2f position)
+void Tetramino::setPositionOffset(const sf::Vector2i position)
 {
 	offset = position;
 }
 
-void Tetramino::setBuildingPosition(const sf::Vector2f position)
+void Tetramino::setBuildingPosition(const sf::Vector2i position)
 {
 	buildingPosition = position;
 }
 
-sf::Vector2f Tetramino::getBuildingPosition() const 
+sf::Vector2i Tetramino::getBuildingPosition() const 
 {
 	return buildingPosition;
 }
 
-void Tetramino::setModel(	const sf::Vector2f pos0, 
-							const sf::Vector2f pos1, 
-							const sf::Vector2f pos2, 
-							const sf::Vector2f pos3)
+void Tetramino::setModel(	const sf::Vector2i pos0, 
+							const sf::Vector2i pos1, 
+							const sf::Vector2i pos2, 
+							const sf::Vector2i pos3)
 {
 	blocks[0].setBuildingPosition(pos0);
 	blocks[1].setBuildingPosition(pos1);
@@ -63,7 +63,7 @@ void Tetramino::adaptPixelPosition()
 	for(unsigned int i = 0; i < numOfBlocks; ++i)
 	{
 		//30 - size of block...bad practice
-		blocks[i].setPixelPosition(sf::Vector2f(
+		blocks[i].setPixelPosition(sf::Vector2i(
 			offset.x + buildingPosition.x*30 + blocks[i].getBuildingPosition().x*30,
 			offset.y + buildingPosition.y*30 + blocks[i].getBuildingPosition().y*30));
 	}
@@ -144,7 +144,7 @@ void Tetramino::update(const float deltaTime)
 		adaptPixelPosition();
 }
 
-void Tetramino::hardMove(const sf::Vector2f step)
+void Tetramino::hardMove(const sf::Vector2i step)
 {
 	buildingPosition += step;
 	adaptPixelPosition();
@@ -158,13 +158,13 @@ void Tetramino::draw(sf::RenderTarget &target, sf::RenderStates states) const
 
 void Tetramino::rotateAction()
 {
-	sf::Vector2f pivot = blocks[1].getBuildingPosition(); //center of rotation
+	sf::Vector2i pivot = blocks[1].getBuildingPosition(); //center of rotation
 	for(unsigned int i = 0; i < numOfBlocks; ++i)
 	{
-		sf::Vector2f tmp;
+		sf::Vector2i tmp;
 		tmp.x = blocks[i].getBuildingPosition().y - pivot.y;
 		tmp.y = blocks[i].getBuildingPosition().x - pivot.x;
-		blocks[i].setBuildingPosition(sf::Vector2f(
+		blocks[i].setBuildingPosition(sf::Vector2i(
 			pivot.x - tmp.x, 
 			pivot.y + tmp.y)); 
 	}
@@ -174,7 +174,7 @@ void Tetramino::moveAction()
 {
 	for(unsigned int i = 0; i < numOfBlocks; ++i)
 	{
-		sf::Vector2f tmp = blocks[i].getBuildingPosition();
+		sf::Vector2i tmp = blocks[i].getBuildingPosition();
 		tmp.x += moveValueX;
 		blocks[i].setBuildingPosition(tmp);
 	}

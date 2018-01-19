@@ -7,7 +7,7 @@ class Block: public sf::Drawable
 {
 private:
 	sf::Sprite sprite;
-	sf::Vector2f buildingPosition;
+	sf::Vector2i buildingPosition;
 public:
 	Block(const Block &block) = delete;
 	void operator=(const Block &block) = delete;
@@ -16,9 +16,9 @@ public:
 	Block(const sf::Texture &texture);
 	~Block();
 
-	void setBuildingPosition(const sf::Vector2f position);
-	sf::Vector2f getBuildingPosition();
-	void setPixelPosition(const sf::Vector2f position);
+	void setBuildingPosition(const sf::Vector2i position);
+	sf::Vector2i getBuildingPosition();
+	void setPixelPosition(const sf::Vector2i position);
 	void setTexture(const sf::Texture &texture);
 	void setColor(const sf::Color color);
 	const sf::Sprite& getSprite();

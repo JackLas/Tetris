@@ -13,7 +13,7 @@ GameArea::GameArea()
 
 void GameArea::init()
 {
-	frame.setPosition(sf::Vector2f(15, 15));	
+	frame.setPosition(15.f, 15.f);	
 	frame.setColor(sf::Color(0, 0, 255, 255));
 
 	for(unsigned int i = 0; i < numOfRows; ++i)
@@ -47,7 +47,7 @@ void GameArea::takeBlocksFromTetramino(Tetramino &tetramino)
 {
 	for(unsigned int i = 0; i < tetramino.getNumOfBlocks(); ++i)
 	{
-		sf::Vector2f absolutePosition = tetramino.getBuildingPosition() + tetramino[i].getBuildingPosition();
+		sf::Vector2i absolutePosition = tetramino.getBuildingPosition() + tetramino[i].getBuildingPosition();
 		blocks[(int)absolutePosition.y][(int)absolutePosition.x] = new sf::Sprite(tetramino[i].getSprite());
 	}
 }
