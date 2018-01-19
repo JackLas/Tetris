@@ -22,7 +22,7 @@ Game::~Game()
 	delete tetramino;
 }
 
-void Game::handleInput(const sf::Event event)
+void Game::handleInput(const sf::Event &event)
 {
 	if(event.type == sf::Event::KeyPressed)
 	{
@@ -64,6 +64,7 @@ void Game::update(const float deltaTime)
 		gameArea.takeBlocksFromTetramino(*tetramino);
 		resetTetramino();
 	}
+	gameArea.update();
 	
 }
 
@@ -92,9 +93,9 @@ void Game::checkBorderIntersectionAndPushBack()
 	if(min.y < 0) 
 		tetramino->hardMove(sf::Vector2i(0, -min.y));
 	if(max.x > static_cast<int>(gameArea.getNumOfColumns()-1)) 
-		tetramino->hardMove(sf::Vector2i(-((int)max.x % ((int)gameArea.getNumOfColumns()-1)), 0));
+		tetramino->hardMove(sf::Vector2i(-(max.x % static_cast<int>(gameArea.getNumOfColumns()-1)), 0));
 	if(max.y > static_cast<int>(gameArea.getNumOfRows()-1))
-		tetramino->hardMove(sf::Vector2i(0, -((int)max.y % ((int)gameArea.getNumOfRows()-1))));
+		tetramino->hardMove(sf::Vector2i(0, -(max.y % static_cast<int>(gameArea.getNumOfRows()-1))));
 }
 
 bool Game::checkTetraminoMovingEnd()

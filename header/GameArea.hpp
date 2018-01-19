@@ -7,8 +7,8 @@
 class GameArea: public sf::Drawable
 {
 private:
-	static const unsigned int numOfColumns = 10;
 	static const unsigned int numOfRows = 20;
+	static const unsigned int numOfColumns = 10;
 	sf::Sprite frame;
 	sf::Sprite *blocks[numOfRows][numOfColumns];
 public:
@@ -31,6 +31,7 @@ public:
 	void draw(sf::RenderTarget &target, sf::RenderStates states = sf::RenderStates::Default) const;
 private:
 	void init();
+	bool isFullLine(const unsigned int line);
 };
 
 #endif //GAMEAREA_HPP
