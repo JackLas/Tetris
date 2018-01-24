@@ -13,8 +13,11 @@ private:
 	Block blocks[numOfBlocks];
 	sf::Vector2i offset;
 	sf::Vector2i buildingPosition;
-	float speed; //number of steps down per second
-	float elapsedTime;
+	float fallingSpeed; //number of steps per second
+	float movingSpeed;
+	float movingStepTime;
+	float elapsedMovingTime;
+	float elapsedFallingTime;
 
 	int moveValueX;
 	bool isRotate;
@@ -36,11 +39,13 @@ public:
 					const sf::Vector2i pos3);
 	void adaptPixelPosition();
 	void setColor(const sf::Color color);
-	void setSpeed(const float value);
+	void setFallingSpeed(const float value);
+	void setMovingSpeed(const float value);
 	unsigned int getNumOfBlocks() const; 
 
 	void moveLeft();
 	void moveRight();
+	void resetMoving();
 	void rotate();
 	void speedUp();
 	void speedDown();

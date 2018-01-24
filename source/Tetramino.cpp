@@ -8,8 +8,11 @@ Tetramino::Tetramino(const sf::Texture &texture)
 	buildingPosition.x = 0.f;
 	buildingPosition.y = 0.f;
 	moveValueX = 0.f;
-	elapsedTime = 0.f;;
-	speed = 0.f;
+	elapsedMovingTime = 0.f;
+	elapsedFallingTime = 0.f;
+	fallingSpeed = 0.f;
+	movingSpeed = 0.f;
+	movingStepTime = 0.f;
 	isRotate = false;
 	isAccelerate = false;
 }
@@ -74,9 +77,14 @@ void Tetramino::setColor(const sf::Color color)
 		blocks[i].setColor(color);
 }
 
-void Tetramino::setSpeed(const float value)
+void Tetramino::setFallingSpeed(const float value)
 {
-	speed = value;
+	fallingSpeed = value;
+}
+
+void Tetramino::setMovingSpeed(const float value)
+{
+	movingSpeed = value;
 }
 
 unsigned int Tetramino::getNumOfBlocks() const
@@ -86,12 +94,21 @@ unsigned int Tetramino::getNumOfBlocks() const
 
 void Tetramino::moveLeft()
 {
-	moveValueX = -1;
+	if(moveValueX == 0)
+		moveValueX -= 1;
 }
 
 void Tetramino::moveRight()
 {
-	moveValueX = 1;
+	if(moveValueX == 0)
+		moveValueX += 1;
+}
+
+void Tetramino::resetMoving()
+{
+	moveValueX = 0;
+	elapsedMovingTime = 0.f;
+	movingStepTime = 0.f;
 }
 
 void Tetramino::rotate()
@@ -111,14 +128,18 @@ void Tetramino::speedDown()
 
 void Tetramino::update(const float deltaTime)
 {
-	elapsedTime += deltaTime;
-
 	bool isChanged = false;
+	elapsedFallingTime += deltaTime;
 	if(moveValueX != 0)
 	{
-		moveAction();
+		elapsedMovingTime += deltaTime;
+		if(elapsedMovingTime >= movingStepTime)
+		{
+			moveAction();
+			elapsedMovingTime -= movingStepTime;
+			movingStepTime = 1/movingSpeed;
+		}
 		isChanged = true;
-		moveValueX = 0;
 	}
 
 	if(isRotate)
@@ -128,14 +149,11 @@ void Tetramino::update(const float deltaTime)
 		isRotate = false;
 	}
 
-	float stepTime;
-	if(isAccelerate)
-		stepTime = 1/speed;
-	else stepTime = 4*(1/speed);
-	if(elapsedTime >= stepTime)
+	int speedRate = isAccelerate ? 4 : 1;
+	if(elapsedFallingTime >= 1/fallingSpeed/speedRate)
 	{
 		++buildingPosition.y;
-		elapsedTime = 0;
+		elapsedFallingTime = 0;
 		isChanged = true;
 	}
 

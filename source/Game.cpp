@@ -51,8 +51,16 @@ void Game::handleInput(const sf::Event &event)
 	}
 
 	if(event.type == sf::Event::KeyReleased)
+	{
+		if(event.key.code == sf::Keyboard::Left)
+			tetramino->resetMoving();
+
+		if( event.key.code == sf::Keyboard::Right)
+			tetramino->resetMoving();
+
 		if(event.key.code == sf::Keyboard::Down)
 			tetramino->speedDown();
+	}
 }
 
 void Game::update(const float deltaTime)

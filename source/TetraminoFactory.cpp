@@ -26,7 +26,8 @@ Tetramino* TetraminoFactory::nextTetramino()
 	Tetramino *tetramino = new Tetramino(*txBlock);
 	tetramino->setColor(colors[rand()%colors.size()]);
 	tetramino->setPositionOffset(sf::Vector2i(15+7, 15+7));
-	tetramino->setSpeed(10);
+	tetramino->setFallingSpeed(2.f);
+	tetramino->setMovingSpeed(7.f);
 	tetramino->setBuildingPosition(spawnPoint);
 	switch(rand()%7)
 	{
