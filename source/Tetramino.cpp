@@ -95,20 +95,26 @@ unsigned int Tetramino::getNumOfBlocks() const
 void Tetramino::moveLeft()
 {
 	if(moveValueX == 0)
-		moveValueX -= 1;
+		moveValueX = -1;
 }
 
 void Tetramino::moveRight()
 {
 	if(moveValueX == 0)
-		moveValueX += 1;
+		moveValueX = 1;
 }
 
-void Tetramino::resetMoving()
+void Tetramino::resetMovingLeft()
 {
-	moveValueX = 0;
-	elapsedMovingTime = 0.f;
-	movingStepTime = 0.f;
+	if(moveValueX == -1)
+		resetMoving();
+
+}
+
+void Tetramino::resetMovingRight()
+{
+	if(moveValueX == 1)
+		resetMoving();
 }
 
 void Tetramino::rotate()
@@ -195,4 +201,11 @@ void Tetramino::moveAction()
 		tmp.x += moveValueX;
 		blocks[i].setBuildingPosition(tmp);
 	}
+}
+
+void Tetramino::resetMoving()
+{
+	moveValueX = 0;
+	elapsedMovingTime = 0.f;
+	movingStepTime = 0.f;
 }

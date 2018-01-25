@@ -45,7 +45,8 @@ public:
 
 	void moveLeft();
 	void moveRight();
-	void resetMoving();
+	void resetMovingLeft();
+	void resetMovingRight();
 	void rotate();
 	void speedUp();
 	void speedDown();
@@ -57,6 +58,7 @@ public:
 private:
 	void rotateAction();
 	void moveAction();
+	void resetMoving();
 };
 
 #endif //TETRAMINO_HPP
