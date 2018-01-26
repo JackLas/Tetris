@@ -14,6 +14,10 @@ Game::Game()
 
 	gameArea.setFrame(txGameAreaFrame);
 
+	nextTetr.setFrame(txNextFrame);
+	nextTetr.setPosition(sf::Vector2i(344, 15));
+	nextTetr.push(factory.nextTetramino());
+
 	tetramino = factory.nextTetramino();
 }
 
@@ -80,6 +84,7 @@ void Game::render()
 {
 	window.draw(*tetramino);
 	window.draw(gameArea);
+	window.draw(nextTetr);
 }
 
 void Game::checkBorderIntersectionAndPushBack()
@@ -124,5 +129,6 @@ bool Game::checkTetraminoMovingEnd()
 void Game::resetTetramino()
 {
 	delete tetramino;
-	tetramino = factory.nextTetramino();
+	tetramino = nextTetr.pop();
+	nextTetr.push(factory.nextTetramino());
 }

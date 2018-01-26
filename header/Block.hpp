@@ -9,8 +9,8 @@ private:
 	sf::Sprite sprite;
 	sf::Vector2i buildingPosition;
 public:
-	Block(const Block &block) = delete;
-	void operator=(const Block &block) = delete;
+	Block(const Block &block);
+	void operator=(const Block &block);
 
 	Block();
 	Block(const sf::Texture &texture);

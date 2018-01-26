@@ -19,10 +19,23 @@ Tetramino::Tetramino(const sf::Texture &texture)
 
 Tetramino::Tetramino(const Tetramino &tetramino)
 {
+	*this = tetramino;
 }
 
 void Tetramino::operator=(const Tetramino &tetramino)
 {
+	for(unsigned int i = 0; i < numOfBlocks; ++i)
+		blocks[i] = tetramino.blocks[i];
+	offset = tetramino.offset;
+	buildingPosition = tetramino.buildingPosition;
+	fallingSpeed = tetramino.fallingSpeed;
+	movingSpeed = tetramino.movingSpeed;
+	movingStepTime = tetramino.movingStepTime;
+	elapsedMovingTime = tetramino.elapsedMovingTime;
+	elapsedFallingTime = tetramino.elapsedFallingTime;
+	moveValueX = tetramino.moveValueX;
+	isRotate = tetramino.isRotate;
+	isAccelerate = tetramino.isAccelerate;
 }
 
 Block& Tetramino::operator[](const unsigned int index)

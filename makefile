@@ -22,7 +22,8 @@ OBJ = 	$(BIN)/main.o \
 		$(BIN)/GameArea.o \
 		$(BIN)/Tetramino.o \
 		$(BIN)/Block.o \
-		$(BIN)/TetraminoFactory.o
+		$(BIN)/TetraminoFactory.o \
+		$(BIN)/NextTetraminoContainer.o \
 
 #final linking
 main.exe: $(OBJ)
@@ -51,4 +52,7 @@ $(BIN)/Block.o: $(SRC)/Block.cpp $(HDR)/Block.hpp
 	$(COMPILATION_COMMAND)
 
 $(BIN)/TetraminoFactory.o: $(SRC)/TetraminoFactory.cpp $(HDR)/TetraminoFactory.hpp $(HDR)/Tetramino.hpp
+	$(COMPILATION_COMMAND)
+
+$(BIN)/NextTetraminoContainer.o: $(SRC)/NextTetraminoContainer.cpp $(HDR)/NextTetraminoContainer.hpp $(HDR)/Tetramino.hpp
 	$(COMPILATION_COMMAND)

@@ -9,6 +9,17 @@ Block::Block(const sf::Texture &texture)
 	sprite.setTexture(texture);
 }
 
+Block::Block(const Block &block)
+{
+	*this = block;
+}
+
+void Block::operator=(const Block &block)
+{
+	sprite = block.sprite;
+	buildingPosition = block.buildingPosition;
+}
+
 Block::~Block()
 {
 }

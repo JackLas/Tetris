@@ -5,6 +5,7 @@
 #include "GameArea.hpp"
 #include "Tetramino.hpp"
 #include "TetraminoFactory.hpp"
+#include "NextTetraminoContainer.hpp"
 
 class Game: public Engine
 {
@@ -15,6 +16,7 @@ private:
 	sf::Texture txNextFrame;
 
 	GameArea gameArea;
+	NextTetraminoContainer nextTetr;
 	TetraminoFactory factory;
 	Tetramino *tetramino;
 public:
