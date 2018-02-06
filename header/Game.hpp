@@ -35,6 +35,7 @@ private:
 
 	void checkBorderIntersectionAndPushBack();
 	bool checkTetraminoMovingEnd();
+	bool checkBlocksIntersection();
 	void resetTetramino();
 };
 

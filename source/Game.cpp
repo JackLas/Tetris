@@ -124,9 +124,22 @@ bool Game::checkTetraminoMovingEnd()
 	return false;
 }
 
+bool Game::checkBlocksIntersection()
+{
+	for(unsigned int i = 0; i < tetramino->getNumOfBlocks(); ++i)
+	{
+		sf::Vector2i absolutePosition = tetramino->getBuildingPosition() + (*tetramino)[i].getBuildingPosition();
+		if(!gameArea.isBlockEmpty(absolutePosition.x, absolutePosition.y))
+			return true;
+	}
+	return false;
+}	
+
 void Game::resetTetramino()
 {
 	delete tetramino;
 	tetramino = nextTetr.pop();
 	nextTetr.push(factory.nextTetramino());
+	if(checkBlocksIntersection())
+		window.close();
 }
