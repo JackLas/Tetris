@@ -25,6 +25,20 @@ sf::Texture ResourceLoader::loadTexture(const std::string name)
 	return texture;
 }
 
+sf::Font ResourceLoader::loadFont(const std::string name)
+{
+	sf::Font font;
+
+	size_t size;
+	byte *data = load(name, &size);
+
+	font.loadFromMemory(data, size);
+
+	delete[] data;
+	return font;
+
+}
+
 byte* ResourceLoader::load(const std::string fileName, size_t *size)
 {
 	std::ifstream rp(resourcePack, std::ios::binary);

@@ -18,6 +18,7 @@ public:
 	~ResourceLoader();
 
 	sf::Texture loadTexture(const std::string name);
+	sf::Font loadFont(const std::string name);
 	byte* load(const std::string fileName, size_t *size);
 private:
 
