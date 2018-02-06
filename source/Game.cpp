@@ -9,6 +9,8 @@ Game::Game()
 	txScoreFrame = loader.loadTexture("scoreFrame.png");
 	txNextFrame = loader.loadTexture("nextFrame.png");
 
+	setPauseKey(sf::Keyboard::Space);
+
 	factory.setBlockTexture(txBlock);
 	factory.setSpawnPoint(sf::Vector2i(4, 0));
 
@@ -16,9 +18,9 @@ Game::Game()
 
 	nextTetr.setFrame(txNextFrame);
 	nextTetr.setPosition(sf::Vector2i(344, 15));
-	nextTetr.push(factory.nextTetramino());
 
 	tetramino = factory.nextTetramino();
+	nextTetr.push(factory.nextTetramino());
 }
 
 Game::~Game()
@@ -30,17 +32,6 @@ void Game::handleInput(const sf::Event &event)
 {
 	if(event.type == sf::Event::KeyPressed)
 	{
-		//test, delete in future
-		if(event.key.code == sf::Keyboard::Space)
-			resetTetramino();
-
-		//test, delete in future
-		if(event.key.code == sf::Keyboard::Return)
-		{
-			gameArea.takeBlocksFromTetramino(*tetramino);
-			resetTetramino();
-		}
-
 		if(event.key.code == sf::Keyboard::Up)
 			tetramino->rotate();
 

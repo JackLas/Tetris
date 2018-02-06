@@ -4,6 +4,7 @@
 
 Engine::Engine():
 window(sf::VideoMode(523, 644), "Tetris", sf::Style::Close),
+pauseKey(sf::Keyboard::Escape),
 isPause(false)
 {
 	window.setFramerateLimit(60);
@@ -25,7 +26,13 @@ void Engine::run()
 		{
 			if(event.type == sf::Event::Closed)
 				window.close();
-			handleInput(event);
+
+			if(event.type == sf::Event::KeyReleased &&
+				event.key.code == pauseKey)
+				isPause = !isPause;
+
+			if(!isPause)
+				handleInput(event);
 		}
 
 		if(!isPause)
@@ -35,4 +42,9 @@ void Engine::run()
 		render();
 		window.display();
 	}
+}
+
+void Engine::setPauseKey(sf::Keyboard::Key key)
+{
+	pauseKey = key;
 }
