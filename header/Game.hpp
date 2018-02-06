@@ -22,6 +22,8 @@ private:
 	NextTetraminoContainer nextTetr;
 	TetraminoFactory factory;
 	Tetramino *tetramino;
+
+	bool isGameOver;
 public:
 	Game(const Game &game) = delete;
 	const Game operator=(const Game &game) = delete;

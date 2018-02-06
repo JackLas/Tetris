@@ -1,7 +1,8 @@
 #include "Game.hpp"
 #include "ResourceLoader.hpp"
 
-Game::Game()
+Game::Game(): 
+isGameOver(false)
 {
 	ResourceLoader loader("resources.rp");
 	txBlock = loader.loadTexture("block.png");
@@ -148,9 +149,12 @@ bool Game::checkBlocksIntersection()
 
 void Game::resetTetramino()
 {
+	if(isGameOver)
+		return;
+	
 	delete tetramino;
 	tetramino = nextTetr.pop();
 	nextTetr.push(factory.nextTetramino());
 	if(checkBlocksIntersection())
-		window.close();
+		isGameOver = true;
 }
