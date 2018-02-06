@@ -5,5 +5,4 @@ bin/*.o
 header/log.hpp
 example.cpp
 coordinates.txt
-resources.rp
 res/*
