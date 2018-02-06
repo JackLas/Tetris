@@ -33,8 +33,6 @@ sf::Font ResourceLoader::loadFont(const std::string name)
 	byte *data = load(name, &size);
 
 	font.loadFromMemory(data, size);
-
-	delete[] data;
 	return font;
 
 }

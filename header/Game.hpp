@@ -3,6 +3,7 @@
 
 #include "Engine.hpp"
 #include "GameArea.hpp"
+#include "Score.hpp"
 #include "Tetramino.hpp"
 #include "TetraminoFactory.hpp"
 #include "NextTetraminoContainer.hpp"
@@ -14,8 +15,10 @@ private:
 	sf::Texture txGameAreaFrame;
 	sf::Texture txScoreFrame;
 	sf::Texture txNextFrame;
+	sf::Font font;
 
 	GameArea gameArea;
+	Score score;
 	NextTetraminoContainer nextTetr;
 	TetraminoFactory factory;
 	Tetramino *tetramino;

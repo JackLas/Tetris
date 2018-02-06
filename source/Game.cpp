@@ -8,6 +8,7 @@ Game::Game()
 	txGameAreaFrame = loader.loadTexture("gameAreaFrame.png");
 	txScoreFrame = loader.loadTexture("scoreFrame.png");
 	txNextFrame = loader.loadTexture("nextFrame.png");
+	font = loader.loadFont("font.ttf");
 
 	setPauseKey(sf::Keyboard::Space);
 
@@ -15,6 +16,10 @@ Game::Game()
 	factory.setSpawnPoint(sf::Vector2i(4, 0));
 
 	gameArea.setFrame(txGameAreaFrame);
+
+	score.setFrame(txScoreFrame);
+	score.setPosition(sf::Vector2i(344, 585));
+	score.setFont(font);
 
 	nextTetr.setFrame(txNextFrame);
 	nextTetr.setPosition(sf::Vector2i(344, 15));
@@ -76,6 +81,7 @@ void Game::render()
 	window.draw(*tetramino);
 	window.draw(gameArea);
 	window.draw(nextTetr);
+	window.draw(score);
 }
 
 void Game::checkBorderIntersectionAndPushBack()
