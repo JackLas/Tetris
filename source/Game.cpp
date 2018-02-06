@@ -3,11 +3,11 @@
 
 Game::Game()
 {
-	ResourceLoader loader;
-	txBlock = loader.loadTexture("res/block.png");
-	txGameAreaFrame = loader.loadTexture("res/gameAreaFrame.png");
-	txScoreFrame = loader.loadTexture("res/scoreFrame.png");
-	txNextFrame = loader.loadTexture("res/nextFrame.png");
+	ResourceLoader loader("resources.rp");
+	txBlock = loader.loadTexture("block.png");
+	txGameAreaFrame = loader.loadTexture("gameAreaFrame.png");
+	txScoreFrame = loader.loadTexture("scoreFrame.png");
+	txNextFrame = loader.loadTexture("nextFrame.png");
 
 	factory.setBlockTexture(txBlock);
 	factory.setSpawnPoint(sf::Vector2i(4, 0));
