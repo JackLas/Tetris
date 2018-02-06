@@ -66,8 +66,19 @@ void Game::handleInput(const sf::Event &event)
 
 void Game::update(const float deltaTime)
 {
+	Block oldTetrBlocks[4];
+	for(unsigned int i = 0; i < tetramino->getNumOfBlocks(); ++i)
+		oldTetrBlocks[i] = (*tetramino)[i];
+	sf::Vector2i oldTetrPos = tetramino->getBuildingPosition();
+
 	tetramino->update(deltaTime);
 	checkBorderIntersectionAndPushBack();
+	if(checkBlocksIntersection())
+	{
+		for(unsigned int i = 0; i < tetramino->getNumOfBlocks(); ++i)
+			(*tetramino)[i] = oldTetrBlocks[i];
+		tetramino->setBuildingPosition(oldTetrPos);
+	}
 	if(checkTetraminoMovingEnd())
 	{
 		gameArea.takeBlocksFromTetramino(*tetramino);
