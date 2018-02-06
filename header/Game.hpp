@@ -22,6 +22,7 @@ private:
 	NextTetraminoContainer nextTetr;
 	TetraminoFactory factory;
 	Tetramino *tetramino;
+	sf::Text message;
 
 	bool isGameOver;
 public:
@@ -39,6 +40,7 @@ private:
 	bool checkTetraminoMovingEnd();
 	bool checkBlocksIntersection();
 	void resetTetramino();
+	void setMessage(const std::string text);
 };
 
 #endif //GAME_HPP

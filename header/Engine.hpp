@@ -24,6 +24,7 @@ protected:
 	virtual void update(const float deltaTime) = 0;
 	virtual void render() = 0;
 	void setPauseKey(sf::Keyboard::Key key);
+	bool getPauseStatus();
 };
 
 #endif //ENGINE_HPP

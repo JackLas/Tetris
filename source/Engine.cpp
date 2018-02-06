@@ -48,3 +48,8 @@ void Engine::setPauseKey(sf::Keyboard::Key key)
 {
 	pauseKey = key;
 }
+
+bool Engine::getPauseStatus()
+{
+	return isPause;
+}

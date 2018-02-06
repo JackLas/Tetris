@@ -13,6 +13,10 @@ isGameOver(false)
 
 	setPauseKey(sf::Keyboard::Space);
 
+	message.setFont(font);
+	message.setPosition(426, 250);
+	message.setCharacterSize(20);
+
 	factory.setBlockTexture(txBlock);
 	factory.setSpawnPoint(sf::Vector2i(4, 0));
 
@@ -95,6 +99,12 @@ void Game::render()
 	window.draw(gameArea);
 	window.draw(nextTetr);
 	window.draw(score);
+	if(isGameOver)
+		setMessage("Game over");
+	else if(getPauseStatus())
+		setMessage("Pause");
+	else setMessage("");
+	window.draw(message);
 }
 
 void Game::checkBorderIntersectionAndPushBack()
@@ -157,4 +167,10 @@ void Game::resetTetramino()
 	nextTetr.push(factory.nextTetramino());
 	if(checkBlocksIntersection())
 		isGameOver = true;
+}
+
+void Game::setMessage(const std::string text)
+{
+	message.setString(text);
+	message.setOrigin(message.getGlobalBounds().width/2, 0);
 }
