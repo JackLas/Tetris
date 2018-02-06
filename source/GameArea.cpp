@@ -1,4 +1,5 @@
 #include "GameArea.hpp"
+#include <cmath>
 
 GameArea::GameArea(const sf::Texture &txFrame)
 {
@@ -19,6 +20,8 @@ void GameArea::init()
 	for(unsigned int i = 0; i < numOfRows; ++i)
 		for(unsigned int j = 0; j < numOfColumns; ++j)
 			blocks[i][j] = nullptr;
+
+	score = nullptr;
 }
 
 GameArea::~GameArea()
@@ -43,6 +46,11 @@ unsigned int GameArea::getNumOfRows()
 	return numOfRows;
 }
 
+void GameArea::connectScoreUnit(Score &score)
+{
+	this->score = &score;
+}
+
 bool GameArea::isBlockEmpty(const unsigned int x, const unsigned int y)
 {
 	return blocks[y][x] == nullptr;
@@ -60,10 +68,12 @@ void GameArea::takeBlocksFromTetramino(Tetramino &tetramino)
 
 void GameArea::update()
 {
+	int fullLines = 0;
 	for(unsigned int i = 0; i < numOfRows; ++i)
 	{
 		if(isFullLine(i))
 		{
+			++fullLines;
 			for(unsigned int k = i; k > 1; --k)
 			{
 				for(unsigned int m = 0; m < numOfColumns; ++m)
@@ -77,6 +87,10 @@ void GameArea::update()
 			}
 		}
 	}
+	if(score != nullptr)
+		score->addPoints(fabs(
+			10*fullLines*(fullLines == 1 ? 1 : (1+fullLines/10.f))
+		));
 }
 
 void GameArea::draw(sf::RenderTarget &target, sf::RenderStates states) const

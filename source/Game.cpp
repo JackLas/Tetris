@@ -15,11 +15,12 @@ Game::Game()
 	factory.setBlockTexture(txBlock);
 	factory.setSpawnPoint(sf::Vector2i(4, 0));
 
-	gameArea.setFrame(txGameAreaFrame);
-
 	score.setFrame(txScoreFrame);
 	score.setPosition(sf::Vector2i(344, 585));
 	score.setFont(font);
+
+	gameArea.setFrame(txGameAreaFrame);
+	gameArea.connectScoreUnit(score);
 
 	nextTetr.setFrame(txNextFrame);
 	nextTetr.setPosition(sf::Vector2i(344, 15));

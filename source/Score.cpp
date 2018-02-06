@@ -32,8 +32,7 @@ void Score::setFont(const sf::Font &font)
 void Score::addPoints(const int points)
 {
 	score += points;
-	if(score > 99999)
-		score = 0;
+	if(score > 99999) score = 0;
 	adaptScoreToText();
 	adaptTextPosition();
 }

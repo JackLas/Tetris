@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "Tetramino.hpp"
+#include "Score.hpp"
 
 class GameArea: public sf::Drawable
 {
@@ -11,6 +12,7 @@ private:
 	static const unsigned int numOfColumns = 10;
 	sf::Sprite frame;
 	sf::Sprite *blocks[numOfRows][numOfColumns];
+	Score *score;
 public:
 	GameArea(const GameArea &area) = delete;
 	void operator=(const GameArea &area) = delete;
@@ -23,6 +25,7 @@ public:
 	
 	unsigned int getNumOfColumns();
 	unsigned int getNumOfRows();
+	void connectScoreUnit(Score &score);
 
 	bool isBlockEmpty(const unsigned int x, const unsigned int y);
 
