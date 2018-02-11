@@ -1,7 +1,7 @@
 #ifndef RESOURCELOADER_HPP
 #define RESOURCELOADER_HPP
 
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include <string>
 
 typedef char byte;

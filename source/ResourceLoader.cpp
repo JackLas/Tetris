@@ -1,8 +1,6 @@
 #include "ResourceLoader.hpp"
 #include <fstream>
 
-#include <iostream>
-
 ResourceLoader::ResourceLoader(const std::string resourcePack): 
 resourcePack(resourcePack)
 {

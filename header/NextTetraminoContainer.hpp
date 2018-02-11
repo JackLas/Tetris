@@ -1,7 +1,7 @@
 #ifndef NEXTTETRAMINOCONTAINER_HPP
 #define NEXTTETRAMINOCONTAINER_HPP
 
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 
 #include "Tetramino.hpp"
 

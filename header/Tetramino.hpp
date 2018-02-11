@@ -1,7 +1,7 @@
 #ifndef TETRAMINO_HPP
 #define TETRAMINO_HPP
 
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include <array>
 
 #include "Block.hpp"
