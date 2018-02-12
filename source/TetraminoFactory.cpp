@@ -85,7 +85,7 @@ void TetraminoFactory::setModel_T(Tetramino *tetramino)
 
 void TetraminoFactory::setModel_S(Tetramino *tetramino)
 {
-	tetramino->setModel(sf::Vector2i(0, 0), sf::Vector2i(-1, 0), sf::Vector2i(-1, 1), sf::Vector2i(-2, 1));
+	tetramino->setModel(sf::Vector2i(2, 0), sf::Vector2i(1, 0), sf::Vector2i(1, 1), sf::Vector2i(0, 1));
 }
 
 void TetraminoFactory::setModel_Z(Tetramino *tetramino)
