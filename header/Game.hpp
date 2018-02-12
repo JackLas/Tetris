@@ -25,6 +25,7 @@ private:
 	sf::Text message;
 
 	bool isGameOver;
+	bool isPaused;
 public:
 	Game(const Game &game) = delete;
 	const Game operator=(const Game &game) = delete;

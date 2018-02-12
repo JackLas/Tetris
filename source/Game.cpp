@@ -2,7 +2,8 @@
 #include "ResourceLoader.hpp"
 
 Game::Game(): 
-isGameOver(false)
+isGameOver(false),
+isPaused(false)
 {
 	ResourceLoader loader("resources.rp");
 	txBlock = loader.loadTexture("block.png");
@@ -10,8 +11,6 @@ isGameOver(false)
 	txScoreFrame = loader.loadTexture("scoreFrame.png");
 	txNextFrame = loader.loadTexture("nextFrame.png");
 	font = loader.loadFont("font.ttf");
-
-	setPauseKey(sf::Keyboard::Space);
 
 	message.setFont(font);
 	message.setPosition(426, 250);
@@ -41,6 +40,18 @@ Game::~Game()
 
 void Game::handleInput(const sf::Event &event)
 {
+	if(event.type == sf::Event::KeyReleased)
+	{
+		if(event.key.code == sf::Keyboard::Space)
+		{
+			isPaused = !isPaused;
+			if(!isGameOver)
+				setMessage(isPaused ? "Pause" : "");
+		}
+	}	
+
+	if(isPaused) return;
+
 	if(event.type == sf::Event::KeyPressed)
 	{
 		if(event.key.code == sf::Keyboard::Up)
@@ -71,6 +82,8 @@ void Game::handleInput(const sf::Event &event)
 
 void Game::update(const float deltaTime)
 {
+	if(isPaused) return;
+
 	Block oldTetrBlocks[4];
 	for(unsigned int i = 0; i < tetramino->getNumOfBlocks(); ++i)
 		oldTetrBlocks[i] = (*tetramino)[i];
@@ -99,11 +112,6 @@ void Game::render()
 	window.draw(gameArea);
 	window.draw(nextTetr);
 	window.draw(score);
-	if(isGameOver)
-		setMessage("Game over");
-	else if(getPauseStatus())
-		setMessage("Pause");
-	else setMessage("");
 	window.draw(message);
 }
 
@@ -166,7 +174,10 @@ void Game::resetTetramino()
 	tetramino = nextTetr.pop();
 	nextTetr.push(factory.nextTetramino());
 	if(checkBlocksIntersection())
+	{
 		isGameOver = true;
+		setMessage("Game over!");
+	}
 }
 
 void Game::setMessage(const std::string &text)

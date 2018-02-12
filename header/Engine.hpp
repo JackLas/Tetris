@@ -9,7 +9,6 @@ protected:
 	sf::RenderWindow window;
 private:
 	sf::Keyboard::Key pauseKey;
-	bool isPause;
 	sf::Clock clock;
 public:
 	Engine(const Engine &engine) = delete;
@@ -23,8 +22,6 @@ protected:
 	virtual void handleInput(const sf::Event &event) = 0;
 	virtual void update(const float deltaTime) = 0;
 	virtual void render() = 0;
-	void setPauseKey(sf::Keyboard::Key key);
-	bool getPauseStatus();
 };
 
 #endif //ENGINE_HPP
