@@ -24,7 +24,7 @@ Block::~Block()
 {
 }
 
-void Block::setBuildingPosition(const sf::Vector2i position)
+void Block::setBuildingPosition(const sf::Vector2i &position)
 {
 	buildingPosition = position;
 }
@@ -34,7 +34,7 @@ sf::Vector2i Block::getBuildingPosition()
 	return buildingPosition;
 }
 
-void Block::setPixelPosition(const sf::Vector2i position)
+void Block::setPixelPosition(const sf::Vector2i &position)
 {
 	sprite.setPosition(static_cast<float>(position.x), static_cast<float>(position.y));
 }
@@ -44,7 +44,7 @@ void Block::setTexture(const sf::Texture &texture)
 	sprite.setTexture(texture);
 }
 
-void Block::setColor(const sf::Color color)
+void Block::setColor(const sf::Color &color)
 {
 	sprite.setColor(color);
 }

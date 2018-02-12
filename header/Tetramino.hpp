@@ -30,15 +30,15 @@ public:
 	Block& operator[](const unsigned int index);
 	~Tetramino();
 
-	void setPositionOffset(const sf::Vector2i position);
-	void setBuildingPosition(const sf::Vector2i position);
+	void setPositionOffset(const sf::Vector2i &position);
+	void setBuildingPosition(const sf::Vector2i &position);
 	sf::Vector2i getBuildingPosition() const;
 	void setModel(	const sf::Vector2i pos0, 
 					const sf::Vector2i pos1, 
 					const sf::Vector2i pos2, 
 					const sf::Vector2i pos3);
 	void adaptPixelPosition();
-	void setColor(const sf::Color color);
+	void setColor(const sf::Color &color);
 	void setFallingSpeed(const float value);
 	void setMovingSpeed(const float value);
 	unsigned int getNumOfBlocks() const; 
@@ -52,7 +52,7 @@ public:
 	void speedDown();
 	void update(const float deltaTime);
 
-	void hardMove(const sf::Vector2i step);
+	void hardMove(const sf::Vector2i &step);
 
 	void draw(sf::RenderTarget &target, sf::RenderStates states = sf::RenderStates::Default) const;
 private:

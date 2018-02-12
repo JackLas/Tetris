@@ -169,7 +169,7 @@ void Game::resetTetramino()
 		isGameOver = true;
 }
 
-void Game::setMessage(const std::string text)
+void Game::setMessage(const std::string &text)
 {
 	message.setString(text);
 	message.setOrigin(message.getGlobalBounds().width/2, 0);

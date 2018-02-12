@@ -16,7 +16,7 @@ void TetraminoFactory::setBlockTexture(sf::Texture &texture)
 	txBlock = &texture;
 }
 
-void TetraminoFactory::setSpawnPoint(const sf::Vector2i point)
+void TetraminoFactory::setSpawnPoint(const sf::Vector2i &point)
 {
 	spawnPoint = point;
 }

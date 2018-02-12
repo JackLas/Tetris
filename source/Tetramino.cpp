@@ -47,12 +47,12 @@ Tetramino::~Tetramino()
 {
 }
 
-void Tetramino::setPositionOffset(const sf::Vector2i position)
+void Tetramino::setPositionOffset(const sf::Vector2i &position)
 {
 	offset = position;
 }
 
-void Tetramino::setBuildingPosition(const sf::Vector2i position)
+void Tetramino::setBuildingPosition(const sf::Vector2i &position)
 {
 	buildingPosition = position;
 }
@@ -84,7 +84,7 @@ void Tetramino::adaptPixelPosition()
 	}
 }
 
-void Tetramino::setColor(const sf::Color color)
+void Tetramino::setColor(const sf::Color &color)
 {
 	for(unsigned int i = 0; i < numOfBlocks; ++i)
 		blocks[i].setColor(color);
@@ -180,7 +180,7 @@ void Tetramino::update(const float deltaTime)
 		adaptPixelPosition();
 }
 
-void Tetramino::hardMove(const sf::Vector2i step)
+void Tetramino::hardMove(const sf::Vector2i &step)
 {
 	buildingPosition += step;
 	adaptPixelPosition();

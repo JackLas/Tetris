@@ -12,7 +12,7 @@ Score::~Score()
 {
 }
 
-void Score::setPosition(const sf::Vector2i position)
+void Score::setPosition(const sf::Vector2i &position)
 {
 	frame.setPosition(position.x, position.y);
 	adaptTextPosition();

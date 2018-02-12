@@ -16,11 +16,11 @@ public:
 	Block(const sf::Texture &texture);
 	~Block();
 
-	void setBuildingPosition(const sf::Vector2i position);
+	void setBuildingPosition(const sf::Vector2i &position);
 	sf::Vector2i getBuildingPosition();
-	void setPixelPosition(const sf::Vector2i position);
+	void setPixelPosition(const sf::Vector2i &position);
 	void setTexture(const sf::Texture &texture);
-	void setColor(const sf::Color color);
+	void setColor(const sf::Color &color);
 	const sf::Sprite& getSprite();
 	void draw(sf::RenderTarget &target, sf::RenderStates states = sf::RenderStates::Default) const;
 };

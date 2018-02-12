@@ -20,7 +20,7 @@ public:
 	~TetraminoFactory();
 
 	void setBlockTexture(sf::Texture &texture);
-	void setSpawnPoint(const sf::Vector2i point);
+	void setSpawnPoint(const sf::Vector2i &point);
 
 	Tetramino* nextTetramino();
 private:

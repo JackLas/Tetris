@@ -12,7 +12,7 @@ NextTetraminoContainer::~NextTetraminoContainer()
 	delete rtxContent;
 }
 
-void NextTetraminoContainer::setPosition(const sf::Vector2i position)
+void NextTetraminoContainer::setPosition(const sf::Vector2i &position)
 {
 	sf::Vector2f floatPos(static_cast<float>(position.x), static_cast<float>(position.y));
 	frame.setPosition(floatPos);

@@ -1,7 +1,7 @@
 #include "ResourceLoader.hpp"
 #include <fstream>
 
-ResourceLoader::ResourceLoader(const std::string resourcePack): 
+ResourceLoader::ResourceLoader(const std::string &resourcePack): 
 resourcePack(resourcePack)
 {
 }
@@ -10,7 +10,7 @@ ResourceLoader::~ResourceLoader()
 {
 }
 
-sf::Texture ResourceLoader::loadTexture(const std::string name)
+sf::Texture ResourceLoader::loadTexture(const std::string& name)
 {
 	sf::Texture texture;
 
@@ -23,7 +23,7 @@ sf::Texture ResourceLoader::loadTexture(const std::string name)
 	return texture;
 }
 
-sf::Font ResourceLoader::loadFont(const std::string name)
+sf::Font ResourceLoader::loadFont(const std::string &name)
 {
 	sf::Font font;
 
@@ -35,7 +35,7 @@ sf::Font ResourceLoader::loadFont(const std::string name)
 
 }
 
-byte* ResourceLoader::load(const std::string fileName, size_t *size)
+byte* ResourceLoader::load(const std::string &fileName, size_t *size)
 {
 	std::ifstream rp(resourcePack, std::ios::binary);
 	if(!rp.is_open())

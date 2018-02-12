@@ -20,7 +20,7 @@ public:
 	NextTetraminoContainer();
 	~NextTetraminoContainer();
 
-	void setPosition(const sf::Vector2i position);
+	void setPosition(const sf::Vector2i &position);
 	void setFrame(const sf::Texture &tx);
 
 	void push(Tetramino *tetramino);

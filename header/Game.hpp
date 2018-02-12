@@ -40,7 +40,7 @@ private:
 	bool checkTetraminoMovingEnd();
 	bool checkBlocksIntersection();
 	void resetTetramino();
-	void setMessage(const std::string text);
+	void setMessage(const std::string &text);
 };
 
 #endif //GAME_HPP
