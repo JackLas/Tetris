@@ -11,7 +11,7 @@ private:
 	sf::Sprite frame;
 	sf::Vector2f centerPosition;
 	sf::RenderTexture *rtxContent;
-	sf::Sprite *content;
+	sf::Sprite content;
 	Tetramino *nextTetramino;
 public:
 	NextTetraminoContainer(const NextTetraminoContainer &cont) = delete;

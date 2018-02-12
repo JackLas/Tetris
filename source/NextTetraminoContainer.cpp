@@ -1,14 +1,14 @@
 #include "NextTetraminoContainer.hpp"
 
 NextTetraminoContainer::NextTetraminoContainer():
-rtxContent(nullptr), content(nullptr), nextTetramino(nullptr)
+rtxContent(nullptr),
+nextTetramino(nullptr)
 {
 	frame.setColor(sf::Color::Blue);
 }
 
 NextTetraminoContainer::~NextTetraminoContainer()
 {
-	delete content;
 	delete rtxContent;
 }
 
@@ -31,17 +31,6 @@ void NextTetraminoContainer::push(Tetramino *tetramino)
 	Tetramino tmpTetramino(*tetramino);
 	tmpTetramino.setPositionOffset(sf::Vector2i(0, 0));
 	tmpTetramino.setBuildingPosition(sf::Vector2i(0, 0));
-	
-	sf::Vector2i min(tmpTetramino[0].getBuildingPosition());
-	for(unsigned int i = 1; i < tmpTetramino.getNumOfBlocks(); ++i)
-	{
-		sf::Vector2i cur(tmpTetramino[i].getBuildingPosition());
-		if(cur.x < min.x) min.x = cur.x;
-		if(cur.y < min.y) min.y = cur.y;
-	}
-	
-	if(min.x < 0) tmpTetramino.setBuildingPosition(sf::Vector2i(-min.x, 0));
-	if(min.y < 0) tmpTetramino.setBuildingPosition(sf::Vector2i(0, -min.y));
 	tmpTetramino.adaptPixelPosition();
 
 	sf::Vector2i max(tmpTetramino[0].getBuildingPosition());
@@ -52,7 +41,7 @@ void NextTetraminoContainer::push(Tetramino *tetramino)
 		if(cur.y > max.y) max.y = cur.y;
 	}
 
-	sf::Vector2i textureSize = (tmpTetramino.getBuildingPosition() + max + sf::Vector2i(1, 1))*30;
+	sf::Vector2i textureSize = (sf::Vector2i(1, 1) + max)*30;
 
 	delete rtxContent;
 	rtxContent = new sf::RenderTexture();
@@ -60,11 +49,10 @@ void NextTetraminoContainer::push(Tetramino *tetramino)
 	rtxContent->clear(sf::Color::Transparent);
 	rtxContent->draw(tmpTetramino);
 	rtxContent->display();
-	delete content;
-	content = new sf::Sprite();
-	content->setTexture(rtxContent->getTexture());
-	content->setOrigin(content->getGlobalBounds().width/2, content->getGlobalBounds().height/2);
-	content->setPosition(centerPosition);
+
+	content.setTexture(rtxContent->getTexture(), true);
+	content.setOrigin(content.getGlobalBounds().width/2, content.getGlobalBounds().height/2);
+	content.setPosition(centerPosition);
 }
 
 Tetramino* NextTetraminoContainer::pop()
@@ -76,6 +64,6 @@ Tetramino* NextTetraminoContainer::pop()
 
 void NextTetraminoContainer::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
-	target.draw(*content, states);
+	target.draw(content, states);
 	target.draw(frame, states);
 }
